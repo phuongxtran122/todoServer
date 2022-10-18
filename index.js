@@ -6,7 +6,6 @@ const app = express();
 // middleware
 app.use(cors());
 app.use(express.json()); // gives us function to call req.body
-app.listen(3000)
 function auth(key) {
     if (key===process.env.TODO_API_KEY) {
         return true
@@ -131,7 +130,7 @@ app.delete("/todos/:entryId", async(req, res) => {
     }
 });
 // run server for testing -node index
-app.listen(5000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("server has started on port 5000");
-});
+})
 module.exports = app
